@@ -1,10 +1,11 @@
 
 
-
+from Entrenadores import presentaciones
 
 #La presentacion de los entrenadores
+presentaciones()
 
-
+#clase para pokemon
 class pokemon:
 
     id = []
@@ -16,13 +17,10 @@ class pokemon:
     min_defensa = 1
 
     def __init__(self, ID, nombre, arma, salud, defensa, ataque):
-        
-        #Comprobación de tipos
-        if not isinstance(ID, int):           
-            print("El ID del pokemon debe ser un entero.")
-        if not isinstance(nombre, int):
-            print("El nombre del pokemon debe ser un string.")
-        if not arma == "puñetazo" or not arma == "patada" or not arma == "codazo" or not arma == "cabezazo":
+        armas = ["puñetazo", "patada", "codazo", "cabezazo"]
+
+        #Comprobación de errores
+        if arma not in armas:
             print("El arma del pokemon debe ser una arma ya creada (puñetazo, patada, codazo, cabezazo).")
         if not isinstance(salud, int) or not (self.min_salud <= salud <= self.max_salud):
             print("La salud del pokemon debe ser un entero entre 1 y 100.")
@@ -30,9 +28,9 @@ class pokemon:
             print("El ataque del pokemon debe ser un entero entre 1 y 10.")
         if not isinstance(defensa, int) or not (self.min_defensa <= defensa <= self.max_defensa):
             print("La defensa del pokemon debe ser un entero entre 1 y 10.")
-        if ID in pokemon.id:
+        if          ID in pokemon.id:
             print("El ID del pokemon debe ser unico.")
-        
+
         self.ID = ID
         self.nombre = nombre
         self.arma = arma
@@ -42,9 +40,8 @@ class pokemon:
         pokemon.id.append(ID)
     
     #Destructor
-    def __del__(self):              
-        pokemon.id.remove(self.ID)
-        print(f"El pokemon: {self.nombre}, eliminado.")
+    def __del__(self):
+        print(f"El pokemon {self.nombre} ha sido eliminado.")
 
     #Printear datos
     def __str__(self):              
@@ -107,38 +104,92 @@ class pokemon:
 
     #Atacar a otro pokemon
     def atacar(self, pokemon, pokemon_a_atacar):     
-        if pokemon_a_atacar in pokemon:                 #Existe el pokemon?
-            
-            if self.pokemon.alive():                    #Esta vivo?
-                
-                if pokemon_a_atacar.alive() == False:   #El pokemon a atacar esta vivo?
-                    
-                    if self.arma == "puñetazo":
-                        pokemon_a_atacar.salud -= self.ataque * self.daño_arma()
-                    elif self.arma == "patada":
-                        pokemon_a_atacar.salud -= self.ataque * self.daño_arma()
-                    elif self.arma == "codazo":
-                        pokemon_a_atacar.salud -= self.ataque * self.daño_arma()
-                    elif self.arma == "cabezazo":
-                        pokemon_a_atacar.salud -= self.ataque * self.daño_arma()
-                    
+                    #Existe el pokemon?
+        if pokemon in pokemon.id:                   #Existe el pokemon a atacar?    
+            if self.alive():                    #Esta vivo?
+                if pokemon_a_atacar.alive():    #El pokemon a atacar esta vivo?
+                    pokemon_a_atacar.salud -= self.ataque * self.daño_arma()
+
                     if pokemon_a_atacar.salud <= 0:
                         pokemon_a_atacar.salud = 0
                         print(f"El pokemon {pokemon_a_atacar.nombre} ha muerto.")
+                    
+                    else:
+                        print(f"El pokemon {pokemon_a_atacar.nombre} ha recibido un ataque de {self.ataque * self.daño_arma()} puntos de daño.")
 
             else:
                 print("El pokemon a atacar debe estar vivo.")
         else:
-            print("El pokemon a atacar debe ser un pokemon ya creado.")
+            print("El pokemon no existe.")
 
     #Defensa de un pokemon
     def defender(self, pokemon, pokemon_a_defender):
         if pokemon.ataque < pokemon_a_defender.defensa:
+            print("Has defendido el ataque.")
             return False
         else:
             return True
           
 
-#Probar casos pokemon
-pokemon(1, "Pikachu", "puñetazo", 100, 10, 10)
-pokemon(2, "Charmander", "patada", 100, 10, 10)
+"""
+#probamos para nuestros pokemons
+pokemon1_entrenador1 = pokemon(11,"Pikachu","cabezazo",69,8,9)
+pokemon2_entrenador1 = pokemon(12,"Pidgey","patada",85,7,7)
+pokemon3_entrenador2 = pokemon(13,"Squirtel","codazo",74,7,6)
+
+pokemon1_entrenafor2 = pokemon(14,"Diglett","puñetazo",82,9,7)
+pokemon2_entrenador2 = pokemon(15,"Venusaur","patada",78,8,6)
+pokemon3_entrenador2 = pokemon(16,"Charmeleon","codazo",88,9,7)
+#enfrentamiento
+print(pokemon.atacar(pokemon1_entrenador1, pokemon1_entrenafor2))
+print(pokemon.defender(pokemon1_entrenador1, pokemon1_entrenafor2))
+"""
+
+
+#Clase herencia para cada tipo de pokemon
+import random
+
+#Clase para pokemon de tipo tierra
+class pokemon_tierra(pokemon):
+    def __init__(self, ID, nombre, arma, salud, defensa, ataque):
+        super().__init__(ID, nombre, arma, salud, defensa, ataque)
+        if not isinstance(defensa, int) or not (11 <= defensa <= 20):
+            print("El arma del pokemon debe ser de tipo tierra (entre 11 y 20).")
+        
+
+#Clase para pokemon de tipo agua
+class pokemon_agua(pokemon):
+    def __init__(self, ID, nombre, arma, salud, defensa, ataque):
+        super().__init__(ID, nombre, arma, salud, defensa, ataque)
+        if not isinstance(ataque, int) or not (11 <= defensa <= 20):
+            print("El arma del pokemon debe ser de tipo agua (entre 11 y 20).")
+        
+
+#Clase para pokemon de tipo aire
+class pokemon_aire(pokemon):
+    def __init__(self, ID, nombre, arma, salud, defensa, ataque):
+        super().__init__(ID, nombre, arma, salud, defensa, ataque)
+    
+    def defender(self, daño):
+        if random.random(0,1) >= 0.5:
+            self.salud -= daño - self.defensa
+            print(f"El pokemon {self.nombre} ha recibido un ataque de {self.ataque * self.daño_arma()} puntos de daño.")
+
+        else:
+            print(f"El pokemon {self.nombre} ha recibido el ataque.")
+          
+#Clase para pokemon de tipo electrico
+class pokemon_electrico(pokemon):
+    def __init__(self, ID, nombre, arma, salud, defensa, ataque):
+        super().__init__(ID, nombre, arma, salud, defensa, ataque)
+    
+    def ataque(self, pokemon_a_atacar):
+        if random.random(0,1) >= 0,5:
+            daño = self.ataque * self.daño_arma() * 2
+            pokemon_a_atacar.salud -= daño - pokemon_a_atacar.defensa
+            print(f"El pokemon {pokemon_a_atacar.nombre} ha recibido un ataque de {daño} puntos de daño.")
+
+        else:
+            pokemon_a_atacar.salud -= self.ataque * self.daño_arma() - pokemon_a_atacar.defensa
+            print(f"El pokemon {pokemon_a_atacar.nombre} ha recibido un ataque de {self.daño} puntos de daño.")
+            
