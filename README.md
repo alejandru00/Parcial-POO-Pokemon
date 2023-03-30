@@ -10,24 +10,24 @@
 
 Atividad 1:
 
-    Juego.Pokemon.
+    Juego.Pokemon.              #(line 4)
     
         -> class pokemon        #(line 4)
         
-        -> comprovación         #(line 130)
+        -> comprovación         #(line 132)
 
 
 Actividad 2:
 
-    Juego.Pokemon
+    Juego.Pokemon                               #(line 146)
     
-        -> class pokemon_tierra(pokemon)        #(line 148)
+        -> class pokemon_tierra(pokemon)        #(line 152)
         
-        -> class pokemon_agua(pokemon)          #(line 156)
+        -> class pokemon_agua(pokemon)          #(line 160)
         
-        -> class pokemon_aire(pokemon)          #(line 164)
+        -> class pokemon_aire(pokemon)          #(line 168)
         
-        -> class pokemon_electrico(pokemon)     #(line 177)
+        -> class pokemon_electrico(pokemon)     #(line 181)
 
 
 Actividad 3:
@@ -40,6 +40,10 @@ Actividad 3:
 CSV's:
 
     "coach_1_pokemons.csv" y "coach_2_pokemons"
+    
+DRAWIO:
+
+    Drawio.UML
     
     
 Main (donde debería funcionar el juego completado (los 3 ejercicios juntios -falla el tercero)):
