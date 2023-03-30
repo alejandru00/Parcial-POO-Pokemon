@@ -1,10 +1,5 @@
 
 
-from Entrenadores import presentaciones
-
-#La presentacion de los entrenadores
-presentaciones()
-
 #clase para pokemon
 class pokemon:
 
@@ -85,7 +80,7 @@ class pokemon:
             print("No se puede cambiar la defensa.")
 
     #Comprobar si el pokemon esta vivo
-    def alive(self):               
+    def vivo(self):               
         if self.salud > 0:
             return True
         else:
@@ -106,8 +101,8 @@ class pokemon:
     def atacar(self, pokemon, pokemon_a_atacar):     
                     #Existe el pokemon?
         if pokemon in pokemon.id:                   #Existe el pokemon a atacar?    
-            if self.alive():                    #Esta vivo?
-                if pokemon_a_atacar.alive():    #El pokemon a atacar esta vivo?
+            if self.vivo():                    #Esta vivo?
+                if pokemon_a_atacar.vivo():    #El pokemon a atacar esta vivo?
                     pokemon_a_atacar.salud -= self.ataque * self.daño_arma()
 
                     if pokemon_a_atacar.salud <= 0:
@@ -184,7 +179,7 @@ class pokemon_electrico(pokemon):
         super().__init__(ID, nombre, arma, salud, defensa, ataque)
     
     def ataque(self, pokemon_a_atacar):
-        if random.random(0,1) >= 0,5:
+        if random.random(0,1) >= 0.5:
             daño = self.ataque * self.daño_arma() * 2
             pokemon_a_atacar.salud -= daño - pokemon_a_atacar.defensa
             print(f"El pokemon {pokemon_a_atacar.nombre} ha recibido un ataque de {daño} puntos de daño.")
