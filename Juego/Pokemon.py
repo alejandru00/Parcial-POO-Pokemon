@@ -1,7 +1,8 @@
 
+#EJERCICIO 1 (till line 142) Y EJERCICIO 2 (till end of file)
 
 #clase para pokemon
-class pokemon:
+class pokemon():
 
     id = []
     max_salud = 100
@@ -101,8 +102,8 @@ class pokemon:
     def atacar(self, pokemon, pokemon_a_atacar):     
                     #Existe el pokemon?
         if pokemon in pokemon.id:                   #Existe el pokemon a atacar?    
-            if self.vivo():                    #Esta vivo?
-                if pokemon_a_atacar.vivo():    #El pokemon a atacar esta vivo?
+            if self.vivo():                         #Esta vivo?
+                if pokemon_a_atacar.vivo():         #El pokemon a atacar esta vivo?
                     pokemon_a_atacar.salud -= self.ataque * self.daño_arma()
 
                     if pokemon_a_atacar.salud <= 0:
@@ -126,7 +127,7 @@ class pokemon:
             return True
           
 
-"""
+"""                 #La prueba que nos pedia en el ejercicio 1
 #probamos para nuestros pokemons
 pokemon1_entrenador1 = pokemon(11,"Pikachu","cabezazo",69,8,9)
 pokemon2_entrenador1 = pokemon(12,"Pidgey","patada",85,7,7)
@@ -140,9 +141,9 @@ print(pokemon.atacar(pokemon1_entrenador1, pokemon1_entrenafor2))
 print(pokemon.defender(pokemon1_entrenador1, pokemon1_entrenafor2))
 """
 
+import random
 
 #Clase herencia para cada tipo de pokemon
-import random
 
 #Clase para pokemon de tipo tierra
 class pokemon_tierra(pokemon):

@@ -1,4 +1,5 @@
 
+#INTENTO EJERCICIO 3
 
 import csv
 from Pokemon import pokemon
