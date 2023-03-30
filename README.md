@@ -8,11 +8,6 @@
 
 # ACTIVIDADES Y DONDE LOCALIZARLAS.
 
-Main (donde debería funcionar el juego completado (los 3 ejercicios juntios -falla el tercero)):
-
-    Juego.Entrenadores
-
-
 Atividad 1:
 
     Juego.Pokemon.
@@ -45,3 +40,10 @@ Actividad 3:
 CSV's:
 
     "coach_1_pokemons.csv" y "coach_2_pokemons"
+    
+    
+Main (donde debería funcionar el juego completado (los 3 ejercicios juntios -falla el tercero)):
+
+    Juego.Entrenadores
+
+
