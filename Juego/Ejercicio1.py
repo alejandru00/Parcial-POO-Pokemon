@@ -18,17 +18,17 @@ class pokemon:
     def __init__(self, ID, nombre, arma, salud, defensa, ataque):
         
         #Comprobación de tipos
-        if not ID == int:           
+        if not isinstance(ID, int):           
             print("El ID del pokemon debe ser un entero.")
-        if not nombre == str:
+        if not isinstance(nombre, int):
             print("El nombre del pokemon debe ser un string.")
         if not arma == "puñetazo" or not arma == "patada" or not arma == "codazo" or not arma == "cabezazo":
             print("El arma del pokemon debe ser una arma ya creada (puñetazo, patada, codazo, cabezazo).")
-        if not salud == int or not (self.min_salud <= salud <= self.max_salud):
+        if not isinstance(salud, int) or not (self.min_salud <= salud <= self.max_salud):
             print("La salud del pokemon debe ser un entero entre 1 y 100.")
-        if not ataque == int or not (self.min_ataque <= ataque <= self.max_ataque):
+        if not isinstance(ataque, int) or not (self.min_ataque <= ataque <= self.max_ataque):
             print("El ataque del pokemon debe ser un entero entre 1 y 10.")
-        if not defensa == int or not (self.min_defensa <= defensa <= self.max_defensa):
+        if not isinstance(defensa, int) or not (self.min_defensa <= defensa <= self.max_defensa):
             print("La defensa del pokemon debe ser un entero entre 1 y 10.")
         if ID in pokemon.id:
             print("El ID del pokemon debe ser unico.")
@@ -141,3 +141,4 @@ class pokemon:
 
 #Probar casos pokemon
 pokemon(1, "Pikachu", "puñetazo", 100, 10, 10)
+pokemon(2, "Charmander", "patada", 100, 10, 10)
