@@ -1,6 +1,8 @@
 
 #EJERCICIO 1 (till line 142) Y EJERCICIO 2 (till end of file)
 
+#ACTIVIDAD 1 
+
 #clase para pokemon
 class pokemon():
 
@@ -141,6 +143,8 @@ print(pokemon.atacar(pokemon1_entrenador1, pokemon1_entrenafor2))
 print(pokemon.defender(pokemon1_entrenador1, pokemon1_entrenafor2))
 """
 
+#ACTIVIDAD 2
+
 import random
 
 #Clase herencia para cada tipo de pokemon
@@ -166,7 +170,7 @@ class pokemon_aire(pokemon):
     def __init__(self, ID, nombre, arma, salud, defensa, ataque):
         super().__init__(ID, nombre, arma, salud, defensa, ataque)
     
-    def defender(self, daño):
+    def defender(self, daño):                      #Cambio en la funcion de defensa
         if random.random(0,1) >= 0.5:
             self.salud -= daño - self.defensa
             print(f"El pokemon {self.nombre} ha recibido un ataque de {self.ataque * self.daño_arma()} puntos de daño.")
@@ -179,7 +183,7 @@ class pokemon_electrico(pokemon):
     def __init__(self, ID, nombre, arma, salud, defensa, ataque):
         super().__init__(ID, nombre, arma, salud, defensa, ataque)
     
-    def ataque(self, pokemon_a_atacar):
+    def ataque(self, pokemon_a_atacar):             #Cambio en la funcion de ataque
         if random.random(0,1) >= 0.5:
             daño = self.ataque * self.daño_arma() * 2
             pokemon_a_atacar.salud -= daño - pokemon_a_atacar.defensa

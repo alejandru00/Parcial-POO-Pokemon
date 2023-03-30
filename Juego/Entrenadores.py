@@ -4,7 +4,8 @@
 import csv
 from Pokemon import pokemon
 
-def datos_entrenadores(coach_1_pokemons,csv):           #Funcion para leer los datos de los entrenadores
+#Funcion para leer los datos de los entrenadores
+def datos_entrenadores(coach_1_pokemons,csv):           
     pokemons_entrenador1 = []
     with open("coach_1_pokemons.csv", "r") as file:
         reader = csv.reader(file)
@@ -33,7 +34,8 @@ def datos_entrenadores(coach_1_pokemons,csv):           #Funcion para leer los d
 
     return pokemons_entrenador1 and pokemons_entrenador2
 
-def elegir_pokemon(pokemon):    #Funcion para elegir el pokemon
+#Funcion para elegir el pokemon
+def elegir_pokemon(pokemon):    
     print("Pokemon disponibles: ")
     for i, p in enumerate(pokemon):
         print(f"{i+1}. {p.get_nombre()} (salud: {p.get_salud()})")
@@ -48,12 +50,14 @@ def elegir_pokemon(pokemon):    #Funcion para elegir el pokemon
         except ValueError:
             print("Opcion inválida.")
 
-def entrenador_jugando(entrenador):
+#Funcion si sigue algun pokemon vivo
+def entrenador_jugando(entrenador):         
     for p in entrenador:
         if p.vivo():
             return True
     return False
 
+#Main
 def main():
     entrenador1 = datos_entrenadores('coach_1_pokemons.csv', csv)
     entrenador2 = datos_entrenadores('coach_2_pokemons.csv', csv)
